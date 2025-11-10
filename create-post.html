@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UofL TalkPoint — Create Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">TP</div>
+      <div>
+        <h1>Create Post</h1>
+        <div class="sub">UofL TalkPoint · Share campus moments with your peers</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="panel" id="form">
+        <h2>Post Composer</h2>
+
+        <div id="drop" class="drop">
+          <div>
+            <p>Drag & drop a <b>JPEG/PNG</b> (≤ 2 MB), or</p>
+            <span class="cta">Browse files</span>
+          </div>
+          <input id="file" class="hidden" type="file" accept="image/png,image/jpeg" />
+        </div>
+
+        <div class="row">
+          <label for="caption">Caption (optional · max 280 characters)</label>
+          <textarea id="caption" placeholder="Tell your classmates what's happening..."></textarea>
+          <div class="meta">
+            <div>Tips: keep it short & positive</div>
+            <div id="counter" class="counter ok">0 / 280</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label>Visibility</label>
+          <div class="choices">
+            <div class="chip active" data-value="public">Public (UofL students)</div>
+            <div class="chip" data-value="followers">Only followers</div>
+          </div>
+        </div>
+
+        <div class="bar">
+          <button class="secondary" id="resetBtn" type="button">Clear</button>
+          <button id="postBtn" type="button" disabled>Post</button>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>Live Preview</h2>
+        <div class="card" id="preview">
+          <div class="head">
+            <div class="avatar"></div>
+            <div class="uname">you@louisville.edu</div>
+            <div class="time">now</div>
+          </div>
+          <div class="imgbox" id="imgBox">
+            <span>No image selected</span>
+          </div>
+          <div class="cap" id="capOut" style="display:none"></div>
+          <div class="acts">❤️ 0 &nbsp;&nbsp; 💬 0</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Posted! (mock)</div>
+  <script src="script.js"></script>
+</body>
+</html>

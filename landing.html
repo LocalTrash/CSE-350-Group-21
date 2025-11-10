@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UofL TalkPoint — Landing</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Minimal landing-only tweaks (keeps your design system) */
+    .hero{
+      border-radius: var(--radius);
+      padding: 46px 28px;
+      background:
+        radial-gradient(800px 500px at 110% -20%, rgba(208,0,0,.18), transparent 60%),
+        linear-gradient(180deg, var(--panel), var(--soft));
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      display:grid;gap:22px;
+      grid-template-columns: 1.1fr .9fr;
+      align-items:center;
+    }
+    @media (max-width:980px){ .hero{grid-template-columns:1fr} }
+    .title{font-size:clamp(28px,4.2vw,44px);line-height:1.1;margin:0}
+    .lead{color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .btn{border:none;background:var(--brand);color:#fff;padding:13px 18px;border-radius:12px;font-weight:800;letter-spacing:.2px;box-shadow:var(--shadow);text-decoration:none;display:inline-block}
+    .btn.outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.16)}
+    .mock{
+      background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:20px;
+      aspect-ratio: 10/9; display:grid;place-items:center;padding:18px;
+    }
+    .grid3{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+    @media (max-width:980px){ .grid3{grid-template-columns:1fr} }
+    .mini{display:flex;gap:12px;align-items:flex-start}
+    .dot{width:22px;height:22px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    footer{color:var(--muted);font-size:13px;margin:26px 0 10px;text-align:center}
+    nav a{color:var(--text);text-decoration:none;opacity:.9}
+    nav a:hover{opacity:1}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top Nav -->
+    <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="brand">TP</div>
+        <strong>UofL TalkPoint</strong>
+      </div>
+      <nav style="display:flex;gap:16px">
+        <a href="feed.html">Feed</a>
+        <a href="index.html">Create Post</a>
+        <a href="#" onclick="alert('Mock: sign-in page');return false;">Sign In</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1 class="title">A private social feed for UofL students</h1>
+        <p class="lead">Share campus moments, connect with classmates, and keep your community close — verified with your <b>@louisville.edu</b> email.</p>
+        <div class="cta">
+          <a class="btn" href="feed.html">Open Feed</a>
+          <a class="btn outline" href="index.html">Create a Post</a>
+        </div>
+        <div class="sub" style="margin-top:10px">Security • Performance • Usability • Maintainability</div>
+      </div>
+
+      <!-- Simple phone mock (inline SVG) -->
+      <div class="mock" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="95" y="10" rx="28" ry="28" width="230" height="360" fill="#0f1320" stroke="rgba(255,255,255,.12)"/>
+          <rect x="115" y="40" rx="16" ry="16" width="190" height="120" fill="#0a0d14" stroke="rgba(255,255,255,.12)"/>
+          <rect x="115" y="180" rx="10" ry="10" width="190" height="14" fill="#2a3144"/>
+          <rect x="115" y="202" rx="10" ry="10" width="150" height="14" fill="#2a3144"/>
+          <rect x="115" y="248" rx="10" ry="10" width="70" height="12" fill="#2a3144"/>
+          <rect x="195" y="248" rx="10" ry="10" width="50" height="12" fill="#2a3144"/>
+          <rect x="115" y="270" rx="12" ry="12" width="88" height="28" fill="#d00000"/>
+          <rect x="215" y="270" rx="12" ry="12" width="90" height="28" fill="transparent" stroke="#d00000"/>
+          <circle cx="211" cy="26" r="4" fill="#2a3144"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section style="margin:26px 0">
+      <div class="grid3">
+        <div class="panel">
+          <div class="mini"><div class="dot"></div><h2 style="margin:0">Student-only Access</h2></div>
+          <p class="sub" style="margin-top:8px">Sign up with @louisville.edu to keep the community private and safe.</p>
+        </div>
+        <div class="panel">
+          <div class="mini"><div class="dot"></div><h2 style="margin:0">Fast & Simple</h2></div>
+          <p class="sub" style="margin-top:8px">Clean posting flow, real-time preview, and a smooth feed experience.</p>
+        </div>
+        <div class="panel">
+          <div class="mini"><div class="dot"></div><h2 style="margin:0">Built for Quality</h2></div>
+          <p class="sub" style="margin-top:8px">Security, performance, and maintainability guided by our NFRs.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 UofL TalkPoint · Demo landing (student project)</footer>
+  </div>
+</body>
+</html>

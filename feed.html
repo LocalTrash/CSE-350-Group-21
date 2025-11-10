@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UofL TalkPoint — Feed</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">TP</div>
+      <div>
+        <h1>Campus Feed</h1>
+        <div class="sub">See what other UofL students are posting</div>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <section class="panel" style="margin-bottom:18px">
+      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <input id="q" placeholder="Search by user or caption…" 
+               style="flex:1;min-width:240px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:var(--card);color:var(--text);outline:none">
+        <div class="choices" id="scope">
+          <div class="chip active" data-scope="all">All</div>
+          <div class="chip" data-scope="following">Following</div>
+          <div class="chip" data-scope="mine">My posts</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feed -->
+    <section class="grid" id="feedGrid" style="grid-template-columns:1fr;gap:18px"></section>
+
+    <!-- Loader / Pager -->
+    <div id="pager" class="sub" style="text-align:center;margin:22px 0">Loading…</div>
+  </div>
+
+  <script src="feed.js"></script>
+</body>
+</html>
