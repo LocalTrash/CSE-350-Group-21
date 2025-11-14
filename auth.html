@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UofL TalkPoint — Sign In / Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+    <!-- Top bar -->
+    <header class="auth-topbar">
+      <div class="auth-brand">
+        <div class="auth-logo-pill"></div>
+        <div class="auth-brand-text">TALKPOINT</div>
+      </div>
+      <a href="landing.html" class="auth-home-link">Home</a>
+    </header>
+
+    <!-- Main card -->
+    <main class="auth-main">
+      <section class="auth-hero">
+        <span class="auth-tag">UofL only</span>
+        <h1 class="auth-hero-title">Welcome back, Cardinal.</h1>
+        <p class="auth-hero-copy">
+          Sign in with your <strong>@louisville.edu</strong> email to post, like
+          and comment on the campus feed.
+        </p>
+        <ul class="auth-hero-points">
+          <li>Verified UofL students only</li>
+          <li>Clean, private campus network</li>
+          <li>Fast and simple posting</li>
+        </ul>
+      </section>
+
+      <section class="auth-card">
+        <!-- Tabs -->
+        <div class="auth-tabs" id="authTabs">
+          <button
+            id="signinTab"
+            class="auth-tab active"
+            data-mode="signin"
+            type="button"
+          >
+            Sign In
+          </button>
+          <button
+            id="signupTab"
+            class="auth-tab"
+            data-mode="signup"
+            type="button"
+          >
+            Sign Up
+          </button>
+          <button
+            id="verifyTabBtn"
+            class="auth-tab"
+            data-mode="verify"
+            type="button"
+          >
+            Verify Email
+          </button>
+        </div>
+
+        <!-- Sign in panel -->
+        <div id="signinPanel" class="auth-panel active">
+          <label class="auth-field">
+            <span>Email</span>
+            <input
+              id="signinEmail"
+              type="email"
+              placeholder="you@louisville.edu"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label class="auth-field">
+            <span>Password</span>
+            <input
+              id="signinPassword"
+              type="password"
+              placeholder="Your password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+
+          <button id="btnSignin" class="auth-primary-btn" type="button">
+            Sign In
+          </button>
+
+          <p class="auth-switch-copy">
+            New here?
+            <button
+              type="button"
+              class="auth-inline-link"
+              data-mode-switch="signup"
+            >
+              Create an account
+            </button>
+          </p>
+        </div>
+
+        <!-- Sign up panel -->
+        <div id="signupPanel" class="auth-panel">
+          <label class="auth-field">
+            <span>Email</span>
+            <input
+              id="signupEmail"
+              type="email"
+              placeholder="you@louisville.edu"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label class="auth-field">
+            <span>Username</span>
+            <input
+              id="signupUsername"
+              type="text"
+              placeholder="Display name on TalkPoint"
+              autocomplete="username"
+              required
+            />
+          </label>
+
+          <label class="auth-field">
+            <span>Password</span>
+            <input
+              id="signupPassword"
+              type="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              required
+            />
+          </label>
+
+          <button id="btnSignup" class="auth-primary-btn" type="button">
+            Create account
+          </button>
+
+          <p class="auth-switch-copy">
+            Already verified?
+            <button
+              type="button"
+              class="auth-inline-link"
+              data-mode-switch="signin"
+            >
+              Sign in instead
+            </button>
+          </p>
+        </div>
+
+        <!-- Verify panel -->
+        <div id="verifyPanel" class="auth-panel">
+          <p class="auth-panel-copy">
+            We sent a code to your <strong>@louisville.edu</strong> email.
+            Paste it here to verify and auto-login.
+          </p>
+
+          <label class="auth-field">
+            <span>Email</span>
+            <input
+              id="v_email"
+              type="email"
+              placeholder="you@louisville.edu"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label class="auth-field">
+            <span>Verification code</span>
+            <input
+              id="v_code"
+              type="text"
+              placeholder="6-digit code"
+              maxlength="16"
+              required
+            />
+          </label>
+
+          <button id="btnVerify" class="auth-primary-btn" type="button">
+            Verify &amp; Sign In
+          </button>
+
+          <p class="auth-switch-copy">
+            Didn’t get it?
+            <span class="auth-muted">Check spam or request a new code.</span>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

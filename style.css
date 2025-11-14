@@ -1,0 +1,1148 @@
+/* ===== Global ===== */
+
+:root {
+  --bg-main: radial-gradient(circle at top left, #101633 0, #050710 55%);
+  --bg-card: radial-gradient(circle at top left, #141c3f 0, #050713 70%);
+  --border-soft: rgba(255, 255, 255, 0.06);
+  --text-main: #f9fbff;
+  --text-muted: #a4adc8;
+  --pill-pink-bg: rgba(255, 59, 106, 0.16);
+  --pill-pink-border: rgba(255, 114, 151, 0.8);
+  --pink: #ff3b6a;
+  --orange: #ff7b4a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* =========================================================
+   SHARED LAYOUT (feed + create + landing)
+   ======================================================= */
+
+.shell {
+  max-width: 1120px;
+  margin: 24px auto 40px;
+  padding: 0 20px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 25% 0, #ffe5ee 0, var(--pink) 40%, var(--orange) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 10px 35px rgba(0, 0, 0, 0.9);
+}
+
+.brand-text {
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-pill {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(5, 7, 16, 0.7);
+  color: var(--text-main);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-pill-active {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(19, 27, 56, 0.9);
+}
+
+.nav-pill-ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Cards & main */
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 28px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.9);
+  color: var(--text-main);
+}
+
+.card-wide {
+  width: 100%;
+  padding: 22px 24px 24px;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.card-title {
+  margin: 16px 0 4px;
+  font-size: 24px;
+}
+
+.card-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Pills / chips */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.pill-small {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+}
+
+.pill-soft {
+  background: var(--pill-pink-bg);
+  color: #ffb8cb;
+  border: 1px solid var(--pill-pink-border);
+}
+
+.chip-row {
+  display: inline-flex;
+  gap: 6px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(3, 8, 23, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chip {
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.chip-active {
+  background: var(--pink);
+  color: #050713;
+  box-shadow: 0 12px 30px rgba(255, 59, 106, 0.5);
+}
+
+/* Fields */
+
+.field {
+  display: block;
+}
+
+.field-inline input,
+.field textarea,
+.field input {
+  width: 100%;
+}
+
+.field input,
+.field textarea {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(6, 12, 25, 0.95);
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.feed-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Buttons */
+
+.btn {
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--pink), var(--orange));
+  color: #050713;
+  box-shadow: 0 18px 45px rgba(255, 59, 106, 0.45);
+}
+
+.btn-outline {
+  background: rgba(8, 13, 30, 0.92);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Toast */
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(6, 12, 25, 0.98);
+  color: var(--text-main);
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+  z-index: 999;
+}
+
+.toast-error {
+  border-color: rgba(255, 85, 120, 0.9);
+  color: #ffd7e4;
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================================================
+   FEED PAGE
+   ======================================================= */
+
+.feed-list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.empty-state {
+  padding: 14px 10px 4px;
+  text-align: left;
+  color: var(--text-muted);
+}
+
+.empty-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.empty-body {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* Optional post card styles if feed.js uses them */
+
+.post-card {
+  border-radius: 18px;
+  padding: 12px 14px 12px;
+  background: rgba(4, 10, 25, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.post-author {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.post-meta {
+  font-size: 11px;
+  color: #7c84a3;
+}
+
+.post-caption {
+  font-size: 13px;
+  margin: 4px 0 8px;
+}
+
+.post-image img {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   CREATE POST PAGE
+   ======================================================= */
+
+.card-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.card-split-left {
+  padding-right: 8px;
+}
+
+.card-split-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #b5bdd6;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dropzone {
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  background: rgba(6, 12, 25, 0.95);
+  padding: 16px 14px;
+  position: relative;
+  cursor: pointer;
+}
+
+.drop-main {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #d3d9f3;
+}
+
+.drop-sub {
+  margin: 0;
+  font-size: 11px;
+  color: #7c84a3;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 2px;
+  color: #ffb8cb;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.img-preview {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(4, 10, 25, 0.95);
+  min-height: 180px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img-preview img {
+  max-width: 100%;
+  display: block;
+}
+
+.img-placeholder,
+.preview-placeholder {
+  font-size: 12px;
+  color: #7c84a3;
+}
+
+.caption-meta {
+  font-size: 11px;
+  color: #7c84a3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counter {
+  font-variant-numeric: tabular-nums;
+}
+
+.counter.ok {
+  color: #9be2ff;
+}
+
+.counter.warn {
+  color: #ffd28f;
+}
+
+.counter.bad {
+  color: #ff9bb6;
+}
+
+.caption-ghost {
+  opacity: 0.7;
+  font-size: 11px;
+}
+
+.actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.spacing-top {
+  margin-top: 10px;
+}
+
+.spacing-top-lg {
+  margin-top: 16px;
+}
+
+/* drop dragging state (optional) */
+.dropzone.dragging {
+  border-style: solid;
+  border-color: #ffb8cb;
+}
+
+/* =========================================================
+   LANDING PAGE
+   ======================================================= */
+
+.wrap {
+  max-width: 960px;
+  margin: 32px auto 40px;
+  padding: 0 20px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.top .brand {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 25% 0, #ffe5ee 0, var(--pink) 40%, var(--orange) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.top h1 {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.top nav a {
+  margin-left: 14px;
+  font-size: 13px;
+  color: var(--text-main);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.panel {
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+  padding: 22px 20px 24px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.9);
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.panel .bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.panel .btn {
+  font-size: 14px;
+}
+
+/* =========================================================
+   AUTH PAGE (unchanged from your version)
+   ======================================================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 1120px;
+  padding: 24px 20px 40px;
+}
+
+/* top bar */
+
+.auth-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-logo-pill {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 25% 0, #ffe5ee 0, #ff3b6a 40%, #ff863b 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 10px 35px rgba(0, 0, 0, 0.9);
+}
+
+.auth-brand-text {
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.auth-home-link {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f9fbff;
+  text-decoration: none;
+  background: rgba(5, 7, 16, 0.75);
+}
+
+/* main layout */
+
+.auth-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 44px;
+  align-items: stretch;
+}
+
+/* hero */
+
+.auth-hero {
+  padding: 24px 8px 24px 4px;
+}
+
+.auth-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(255, 59, 106, 0.16);
+  color: #ffb8cb;
+  border: 1px solid rgba(255, 114, 151, 0.8);
+}
+
+.auth-hero-title {
+  margin: 18px 0 8px;
+  font-size: 32px;
+}
+
+.auth-hero-copy {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #a4adc8;
+}
+
+.auth-hero-copy strong {
+  color: #ffffff;
+}
+
+.auth-hero-points {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #b5bdd6;
+}
+
+/* card */
+
+.auth-card {
+  background: var(--bg-card);
+  border-radius: 28px;
+  border: 1px solid var(--border-soft);
+  padding: 22px 24px 24px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.9);
+}
+
+/* tabs */
+
+.auth-tabs {
+  display: inline-flex;
+  padding: 3px;
+  background: rgba(3, 8, 23, 0.85);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #a4adc8;
+  font-size: 13px;
+  padding: 7px 18px;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  background: #ff3b6a;
+  color: #050713;
+  box-shadow: 0 14px 35px rgba(255, 59, 106, 0.6);
+}
+
+/* panels */
+
+.auth-panel {
+  display: none;
+}
+
+.auth-panel.active {
+  display: block;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.auth-field span {
+  color: #b5bdd6;
+}
+
+.auth-field input {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(6, 12, 25, 0.95);
+  padding: 10px 12px;
+  color: #f9fbff;
+  font-size: 13px;
+}
+
+.auth-primary-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 11px 16px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ff3b6a, #ff7b4a);
+  color: #050713;
+  cursor: pointer;
+  box-shadow: 0 18px 45px rgba(255, 59, 106, 0.45);
+}
+
+.auth-switch-copy {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #a4adc8;
+}
+
+.auth-inline-link {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #ff9bb6;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-panel-copy {
+  font-size: 13px;
+  color: #b5bdd6;
+  margin-bottom: 12px;
+}
+
+.auth-muted {
+  color: #7c84a3;
+}
+
+/* Responsive */
+
+@media (max-width: 840px) {
+  .auth-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+  .auth-shell {
+    padding-top: 16px;
+  }
+
+  .card-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card-wide {
+    padding: 18px 16px 20px;
+  }
+
+  .card-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   Instagram-style Feed Layout
+   ========================================================= */
+
+/* Feed list becomes a centered vertical stack */
+#feedList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+/* "No posts yet" message */
+#emptyState {
+  text-align: center;
+  font-size: 14px;
+  color: #a4adc8;
+}
+
+/* Individual post card */
+.ig-post {
+  width: 100%;
+  max-width: 620px;
+  background: #050713;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+/* Header: avatar + username + time */
+.ig-post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 8px;
+}
+
+.ig-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 25% 0, #ffe5ee 0, #ff3b6a 40%, #ff863b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #050713;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.ig-user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.ig-username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ig-subline {
+  font-size: 11px;
+  color: #8b93b6;
+}
+
+/* Image */
+.ig-image-wrap {
+  background: #000;
+}
+
+.ig-image-wrap img {
+  display: block;
+  width: 100%;
+  max-height: 640px;
+  object-fit: contain;
+}
+
+/* Body: actions + caption */
+.ig-post-body {
+  padding: 10px 16px 14px;
+}
+
+.ig-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.ig-like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #e2e6ff;
+}
+
+.ig-like-btn .heart-icon {
+  font-size: 18px;
+  opacity: 0.7;
+  transition: transform 0.12s ease, opacity 0.12s ease, filter 0.18s ease;
+}
+
+.ig-like-btn .like-count {
+  font-size: 13px;
+}
+
+.ig-like-btn.liked .heart-icon {
+  opacity: 1;
+  color: #ff4b7b;
+  filter: drop-shadow(0 0 10px rgba(255, 75, 123, 0.8));
+  transform: scale(1.05);
+}
+
+.ig-like-btn:active .heart-icon {
+  transform: scale(0.9);
+}
+
+.ig-caption {
+  font-size: 13px;
+  color: #d5dcff;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.ig-username-inline {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 720px) {
+  .ig-post {
+    border-radius: 18px;
+  }
+}
+
+.ig-meta-row {
+  margin-top: 6px;
+}
+
+.ig-comment-link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  color: #8b93b6;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ig-comment-link:hover {
+  color: #c5ccff;
+}
+/* ---------- IG-style comments ---------- */
+.ig-comments {
+  margin-top: 8px;
+}
+
+.ig-comment {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #e5e7ff;
+}
+
+.ig-comment-user {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.ig-comment-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.ig-comment-input {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  background: #080b1a;
+  padding: 8px 12px;
+  color: #f9fbff;
+  font-size: 12px;
+}
+
+.ig-comment-input::placeholder {
+  color: #7c84a3;
+}
+
+.ig-comment-submit {
+  border: none;
+  background: none;
+  color: #c5ccff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ig-comment-submit:hover {
+  color: #ffffff;
+}
+
+/* ===== Instagram-style feed cards ===== */
+
+.ig-card {
+  background: #050814;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.9);
+  margin: 32px auto;
+  max-width: 720px;
+  overflow: hidden;
+}
+
+.ig-card-header {
+  padding: 14px 18px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ig-user-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ig-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 25% 0, #ffe5ee 0, #ff3b6a 40%, #ff863b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #050713;
+}
+
+.ig-user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.ig-username {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ig-time {
+  font-size: 11px;
+  color: #8b93b3;
+}
+
+.ig-img-wrap {
+  background: #000;
+}
+
+.ig-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ig-card-footer {
+  padding: 10px 18px 14px;
+}
+
+.ig-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ig-like-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.ig-like-icon {
+  font-size: 18px;
+  color: #f4f6ff;
+  opacity: 0.6;
+}
+
+.ig-like-btn.liked .ig-like-icon {
+  color: #ff5c7f;
+  opacity: 1;
+}
+
+.ig-likes {
+  font-size: 13px;
+  color: #c7cce5;
+}
+
+.ig-caption {
+  margin: 4px 0 8px;
+  font-size: 14px;
+}
+
+.ig-caption-user {
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.ig-comment-list {
+  margin: 4px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ig-comment {
+  font-size: 13px;
+}
+
+.ig-comment-user {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.ig-comment-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ig-comment-input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 10px;
+  font-size: 13px;
+  background: rgba(5, 10, 24, 0.9);
+  color: #f9fbff;
+}
+
+.ig-comment-send {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff3b6a, #ff7b4a);
+  color: #050713;
+}
+
+/* keep card centered on large screens */
+#feedList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

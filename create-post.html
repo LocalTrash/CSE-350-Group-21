@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TalkPoint — Create Post</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="api-client.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <!-- Top nav -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="pill pill-logo"></span>
+        <span class="brand-text">TALKPOINT</span>
+      </div>
+      <nav class="nav-tabs">
+        <a href="feed.html" class="nav-pill">Feed</a>
+        <a href="create-post.html" class="nav-pill nav-pill-active">Create</a>
+        <a href="auth.html" id="signoutLink" class="nav-pill nav-pill-ghost">Sign out</a>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <section class="card card-wide card-split">
+        <!-- Left side: copy -->
+        <div class="card-split-left">
+          <div class="pill pill-small pill-soft">UofL only</div>
+          <h1 class="card-title">Create a post</h1>
+          <p class="card-subtitle">
+            Share what’s happening on campus. Image + short caption only.
+          </p>
+
+          <ul class="bullet-list">
+            <li>Keep it respectful and UofL-related.</li>
+            <li>No personal attacks, hate speech, or spam.</li>
+            <li>Posts are visible to verified @louisville.edu accounts.</li>
+          </ul>
+        </div>
+
+        <!-- Right side: form -->
+        <div class="card-split-right">
+          <!-- Image area -->
+          <label class="field-label">Image</label>
+          <div
+            id="drop"
+            class="dropzone"
+          >
+            <p class="drop-main">
+              Drop an image here, or
+              <button id="chooseFileBtn" type="button" class="link-btn">browse</button>
+            </p>
+            <p class="drop-sub">JPEG or PNG, up to a few MB.</p>
+            <input id="file" type="file" accept="image/*" hidden />
+          </div>
+
+          <div id="imgBox" class="img-preview">
+            <!-- preview injected by script.js -->
+            <span class="img-placeholder">Image preview will appear here.</span>
+          </div>
+
+          <!-- Caption -->
+          <label for="caption" class="field-label spacing-top">
+            Caption
+          </label>
+          <div class="field">
+            <textarea
+              id="caption"
+              rows="3"
+              maxlength="280"
+              placeholder="What’s happening at UofL?"
+            ></textarea>
+          </div>
+          <div class="caption-meta">
+            <span id="counter" class="counter">0 / 280</span>
+            <span id="capOut" class="caption-ghost"></span>
+          </div>
+
+          <!-- Visibility chips (even if you only use 'public', keep IDs/classes for JS) -->
+          <div class="chip-row spacing-top">
+            <button class="chip chip-active" data-vis="public">Public</button>
+            <button class="chip" data-vis="anon">Anon handle</button>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions-row spacing-top-lg">
+            <button id="resetBtn" class="btn btn-outline" type="button">
+              Clear
+            </button>
+            <button id="postBtn" class="btn btn-primary" type="button">
+              Post
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+</body>
+</html>

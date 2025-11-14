@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TalkPoint — Feed</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="api-client.js"></script>
+  <script type="module" src="feed.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <!-- Top nav -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="pill pill-logo"></span>
+        <span class="brand-text">TALKPOINT</span>
+      </div>
+      <nav class="nav-tabs">
+        <a href="feed.html" class="nav-pill nav-pill-active">Feed</a>
+        <a href="create-post.html" class="nav-pill">Create</a>
+        <a href="auth.html" id="signoutLink" class="nav-pill nav-pill-ghost">Sign out</a>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <section class="card card-wide">
+        <header class="card-header card-header-row">
+          <div>
+            <div class="pill pill-small pill-soft">Campus</div>
+            <h1 class="card-title">Campus Feed</h1>
+            <p class="card-subtitle">
+              See what verified UofL students are posting.
+            </p>
+          </div>
+
+          <div class="feed-controls">
+            <div class="chip-row" id="scopeChips">
+              <button class="chip chip-active" data-scope="all">All</button>
+              <button class="chip" data-scope="mine">My posts</button>
+              <button class="chip" data-scope="following">Following</button>
+            </div>
+
+            <div class="field field-inline">
+              <input
+                id="search"
+                type="text"
+                placeholder="Search by caption or username…"
+              />
+            </div>
+          </div>
+        </header>
+
+        <div id="feedList" class="feed-list">
+          <!-- posts injected by feed.js -->
+          <div class="empty-state" id="emptyState">
+            <p class="empty-title">No posts yet. Be the first!</p>
+            <p class="empty-body">
+              Hit <strong>New post</strong> to share what’s happening on campus.
+            </p>
+          </div>
+        </div>
+
+        <footer class="card-footer card-footer-row">
+          <button id="loadMoreBtn" class="btn btn-outline">
+            Load more
+          </button>
+          <a href="create-post.html" class="btn btn-primary">
+            New post
+          </a>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+</body>
+</html>
