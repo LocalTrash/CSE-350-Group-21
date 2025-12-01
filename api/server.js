@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' })); // allow base64 images etc.
 
-// ---------- helpers ----------
+//  helpers 
 
 function signToken(user) {
   return jwt.sign(
@@ -29,12 +29,9 @@ app.get('/', (_req, res) => {
   res.json({ ok: true, service: 'talkpoint-api' });
 });
 
-// ===================================================
-//                  AUTH ROUTES
-// ===================================================
 
-// ---------- SIGN UP ----------
-// Uses stored procedure:
+//                  AUTH ROUTES
+
 //   sp_signup(IN p_email, IN p_username, IN p_password_hash,
 //             OUT p_code, OUT p_expires)
 app.post('/api/auth/signup', async (req, res) => {
@@ -167,7 +164,7 @@ app.post('/api/auth/signin', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials.' });
     }
 
-    // PATCH: if verified_at is NULL, auto-mark as verified on first successful login
+    // PATCH: if verified_at is NULL
     if (!user.verified_at) {
       await pool.query(
         'UPDATE users SET verified_at = NOW() WHERE id = ?',
@@ -187,7 +184,7 @@ app.post('/api/auth/signin', async (req, res) => {
   }
 });
 
-// ---------- CURRENT USER ----------
+// -- Actual USER ----------
 app.get('/api/me', authRequired, async (req, res) => {
   try {
     const [rows] = await pool.query(
@@ -201,11 +198,10 @@ app.get('/api/me', authRequired, async (req, res) => {
   }
 });
 
-// ===================================================
-//                       POSTS
-// ===================================================
 
-// Create post (matches sp_create_post(author_id, image_url, caption))
+//                       POSTS
+
+// create post (sp_create_post(author_id, image_url, caption))
 app.post('/api/posts', authRequired, async (req, res) => {
   try {
     const { imageData, caption } = req.body;
@@ -256,9 +252,9 @@ app.get('/api/posts', authRequired, async (req, res) => {
   }
 });
 
-// ===================================================
+
 //                     COMMENTS
-// ===================================================
+
 
 // Get comments for a post
 app.get('/api/posts/:id/comments', authRequired, async (req, res) => {
@@ -331,16 +327,16 @@ app.post('/api/posts/:id/comments', authRequired, async (req, res) => {
   }
 });
 
-// ===================================================
+
 //                       LIKES
-// ===================================================
+
 
 // Like a post
 app.post('/api/posts/:id/like', authRequired, async (req, res) => {
   try {
     const postId = parseInt(req.params.id, 10);
 
-    // stored procedure handles insert / ignore dup etc.
+    
     await pool.query('CALL sp_like(?,?)', [req.user.id, postId]);
 
     res.json({ ok: true });
@@ -364,9 +360,9 @@ app.post('/api/posts/:id/unlike', authRequired, async (req, res) => {
   }
 });
 
-// ===================================================
+
 //                  START SERVER
-// ===================================================
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

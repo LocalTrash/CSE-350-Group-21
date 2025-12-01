@@ -1,4 +1,4 @@
-/* ===== Global ===== */
+/* global */
 
 :root {
   --bg-main: radial-gradient(circle at top left, #101633 0, #050710 55%);
@@ -26,9 +26,9 @@ body {
   color: var(--text-main);
 }
 
-/* =========================================================
+/* 
    SHARED LAYOUT (feed + create + landing)
-   ======================================================= */
+    */
 
 .shell {
   max-width: 1120px;
@@ -138,7 +138,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Pills / chips */
 
 .pill {
   display: inline-flex;
@@ -267,9 +266,8 @@ body {
   display: none;
 }
 
-/* =========================================================
-   FEED PAGE
-   ======================================================= */
+/* 
+   FEED */
 
 .feed-list {
   margin: 14px 0 0;
@@ -297,7 +295,6 @@ body {
   font-size: 13px;
 }
 
-/* Optional post card styles if feed.js uses them */
 
 .post-card {
   border-radius: 18px;
@@ -334,9 +331,9 @@ body {
   border-radius: 14px;
 }
 
-/* =========================================================
+/* 
    CREATE POST PAGE
-   ======================================================= */
+    */
 
 .card-split {
   display: grid;
@@ -471,9 +468,6 @@ body {
   border-color: #ffb8cb;
 }
 
-/* =========================================================
-   LANDING PAGE
-   ======================================================= */
 
 .wrap {
   max-width: 960px;
@@ -535,9 +529,7 @@ body {
   font-size: 14px;
 }
 
-/* =========================================================
-   AUTH PAGE (unchanged from your version)
-   ======================================================= */
+
 
 .auth-page {
   min-height: 100vh;
@@ -644,7 +636,7 @@ body {
   color: #b5bdd6;
 }
 
-/* card */
+
 
 .auth-card {
   background: var(--bg-card);
@@ -654,7 +646,7 @@ body {
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.9);
 }
 
-/* tabs */
+
 
 .auth-tabs {
   display: inline-flex;
@@ -681,7 +673,7 @@ body {
   box-shadow: 0 14px 35px rgba(255, 59, 106, 0.6);
 }
 
-/* panels */
+
 
 .auth-panel {
   display: none;
@@ -778,11 +770,8 @@ body {
   }
 }
 
-/* =========================================================
-   Instagram-style Feed Layout
-   ========================================================= */
 
-/* Feed list becomes a centered vertical stack */
+/* centered vertical stack */
 #feedList {
   display: flex;
   flex-direction: column;
@@ -791,14 +780,14 @@ body {
   margin-top: 24px;
 }
 
-/* "No posts yet" message */
+/* if empty */
 #emptyState {
   text-align: center;
   font-size: 14px;
   color: #a4adc8;
 }
 
-/* Individual post card */
+/* post cards from everyone (individual) */
 .ig-post {
   width: 100%;
   max-width: 620px;
@@ -811,7 +800,7 @@ body {
   overflow: hidden;
 }
 
-/* Header: avatar + username + time */
+/* avatar + username + time */
 .ig-post-header {
   display: flex;
   align-items: center;
@@ -860,7 +849,7 @@ body {
   object-fit: contain;
 }
 
-/* Body: actions + caption */
+/* actions and captions */
 .ig-post-body {
   padding: 10px 16px 14px;
 }
@@ -917,7 +906,7 @@ body {
   margin-right: 4px;
 }
 
-/* Mobile tweaks */
+/* mobile adapt */
 @media (max-width: 720px) {
   .ig-post {
     border-radius: 18px;
@@ -941,7 +930,7 @@ body {
 .ig-comment-link:hover {
   color: #c5ccff;
 }
-/* ---------- IG-style comments ---------- */
+/* comments */
 .ig-comments {
   margin-top: 8px;
 }
@@ -989,7 +978,7 @@ body {
   color: #ffffff;
 }
 
-/* ===== Instagram-style feed cards ===== */
+/* trying to duplicate the style from instagram posts cards*/
 
 .ig-card {
   background: #050814;
@@ -1140,7 +1129,6 @@ body {
   color: #050713;
 }
 
-/* keep card centered on large screens */
 #feedList {
   display: flex;
   flex-direction: column;

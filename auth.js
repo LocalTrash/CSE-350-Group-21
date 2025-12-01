@@ -1,17 +1,15 @@
 // auth.js
-// Handles Sign In / Sign Up / Verify for auth.html
 
 import { apiFetch } from './api-client.js';
 
-// ---------- helpers ----------
 
 function saveSession(token, user) {
   try {
-    // Main keys used by the rest of the app
+// careful, main keys
     localStorage.setItem('talkpoint_token', token);
     localStorage.setItem('talkpoint_user', JSON.stringify(user));
 
-    // Backward-compat aliases if anything else reads these
+
     localStorage.setItem('tp_token', token);
     localStorage.setItem('tp_user', JSON.stringify(user));
   } catch (err) {
@@ -20,10 +18,10 @@ function saveSession(token, user) {
 }
 
 function showToast(msg) {
-  alert(msg); // swap for fancy toast later if you want
+  alert(msg); //it can be swapped
 }
 
-// ---------- DOM refs ----------
+// forms
 
 // Tabs
 const signinTab = document.getElementById('signinTab');
@@ -43,13 +41,13 @@ const signinEmail = document.getElementById('signinEmail');
 const signinPassword = document.getElementById('signinPassword');
 const btnSignin = document.getElementById('btnSignin');
 
-// Sign up fields
+// Sign up 
 const signupEmail = document.getElementById('signupEmail');
 const signupUsername = document.getElementById('signupUsername');
 const signupPassword = document.getElementById('signupPassword');
 const btnSignup = document.getElementById('btnSignup');
 
-// Verify fields
+// Verify 
 const verifyEmail = document.getElementById('v_email');
 const verifyCode = document.getElementById('v_code');
 const btnVerify = document.getElementById('btnVerify');
@@ -97,12 +95,9 @@ modeSwitchButtons.forEach((btn) => {
 // Default tab
 switchTab('signin');
 
-// ---------- AUTH CALLS (using apiFetch) ----------
+// AUTH CALLS (apifetch)
 
-// NOTE: apiFetch already prefixes `/api`, so we pass
-// paths like `/auth/signin`, not `/api/auth/...`
-
-// Sign In
+// Signing in
 btnSignin?.addEventListener('click', async () => {
   console.log('[auth] Sign In clicked');
 
@@ -129,7 +124,7 @@ btnSignin?.addEventListener('click', async () => {
   }
 });
 
-// Sign Up
+// Signin up
 btnSignup?.addEventListener('click', async () => {
   console.log('[auth] Sign Up clicked');
 

@@ -4,7 +4,7 @@ import { apiFetch, requireAuth } from './api-client.js';
 requireAuth(); // redirect to auth.html if not logged in
 
 
-// ----- Sign out -----
+// sign out - kill the token
 const signoutLink = document.querySelector('#signoutLink');
 if (signoutLink) {
   signoutLink.addEventListener('click', () => {
@@ -16,11 +16,10 @@ if (signoutLink) {
     } catch (e) {
       console.warn('storage clear failed', e);
     }
-    // Let the link navigate to auth.html
   });
 }
 
-// ------- elements -------
+//  elements 
 const fileInput = document.querySelector('#file');
 const chooseFileBtn = document.querySelector('#chooseFileBtn');
 const drop = document.querySelector('#drop');
@@ -145,7 +144,7 @@ postBtn.addEventListener('click', async () => {
 
     postBtn.disabled = true;
 
-    // IMPORTANT: only send 2 fields -> matches sp_create_post(?,?,?)
+    
     const res = await apiFetch('/posts', {
       method: 'POST',
       body: JSON.stringify({
@@ -161,7 +160,7 @@ postBtn.addEventListener('click', async () => {
     showToast('Posted! 🎉');
     resetForm();
 
-    // Optional: redirect to feed after a short delay
+    //  redirect to feed after a delay
     setTimeout(() => {
       window.location.href = 'feed.html';
     }, 800);

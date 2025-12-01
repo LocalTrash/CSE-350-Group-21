@@ -1,13 +1,12 @@
 // api-client.js
-// Shared API helper for auth, feed, and create-post pages
 
 const API_BASE = 'http://localhost:3000/api';
 
-// Use multiple keys so old/new code both work
+// Use multiple keys 
 const TOKEN_KEYS = ['talkpoint_token', 'tp_token', 'token'];
 const USER_KEYS  = ['talkpoint_user', 'tp_user', 'user'];
 
-// ---- token helpers ----
+// ---- token helper
 export function getToken() {
   for (const key of TOKEN_KEYS) {
     const val = localStorage.getItem(key);

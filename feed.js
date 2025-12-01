@@ -10,18 +10,15 @@ if (signoutLink) {
     console.log('[auth] sign out clicked');
 
     try {
-      // Nuclear option: wipe all app storage so no token survives
       localStorage.clear();
       sessionStorage.clear();
     } catch (e) {
       console.warn('storage clear failed', e);
     }
-    // No preventDefault: browser will follow href="auth.html"
-    // If auth.js auto-redirects when a token exists, it's now gone.
   });
 }
 
-// ---------- DOM ----------
+//  DOM 
 const feedList = document.querySelector('#feedList');
 const loadMoreBtn = document.querySelector('#loadMoreBtn');
 const scopeChips = document.querySelectorAll('#scopeChips .chip');
@@ -29,7 +26,7 @@ const searchInput = document.querySelector('#search');
 const toast = document.querySelector('#toast');
 const emptyState = document.querySelector('#emptyState');
 
-// ---------- STATE ----------
+//  STATE 
 let currentScope = 'all';
 let currentQuery = '';
 let page = 1;
@@ -37,7 +34,7 @@ const PAGE_SIZE = 5;
 let loading = false;
 let reachedEnd = false;
 
-// ---------- HELPERS ----------
+
 
 function showToast(msg, isError = false) {
   if (!toast) return;
@@ -72,7 +69,7 @@ function updateLoadMoreVisibility() {
   loadMoreBtn.style.display = reachedEnd ? 'none' : 'inline-flex';
 }
 
-// ---------- COMMENTS ----------
+// COMMENTS general
 
 async function loadCommentsForPost(postId, listEl) {
   if (!listEl) return;
@@ -126,7 +123,7 @@ async function addComment(postId, text, listEl, inputEl) {
   }
 }
 
-// ---------- LIKES ----------
+
 
 async function toggleLike(postId, likeBtn, likeCountEl) {
   const currentlyLiked = likeBtn.classList.contains('liked');
@@ -148,7 +145,6 @@ async function toggleLike(postId, likeBtn, likeCountEl) {
   }
 }
 
-// ---------- RENDERING ----------
 
 function buildPostCard(post) {
   const card = document.createElement('article');
@@ -225,13 +221,12 @@ function buildPostCard(post) {
     }
   });
 
-  // Load existing comments
   loadCommentsForPost(post.id, commentsListEl);
 
   return card;
 }
 
-// ---------- LOAD POSTS ----------
+// load the posts
 
 async function loadPosts({ append = false } = {}) {
   if (loading) return;
@@ -282,9 +277,8 @@ async function loadPosts({ append = false } = {}) {
   }
 }
 
-// ---------- EVENTS ----------
+// all the events
 
-// Scope chips (All / My posts / Following)
 scopeChips.forEach(chip => {
   chip.addEventListener('click', () => {
     const scope = chip.dataset.scope || 'all';
@@ -298,7 +292,7 @@ scopeChips.forEach(chip => {
   });
 });
 
-// Search (simple debounce)
+
 let searchTimer = null;
 if (searchInput) {
   searchInput.addEventListener('input', () => {
@@ -311,7 +305,7 @@ if (searchInput) {
   });
 }
 
-// Load more
+// load more
 if (loadMoreBtn) {
   loadMoreBtn.addEventListener('click', () => {
     if (loading || reachedEnd) return;
@@ -320,7 +314,7 @@ if (loadMoreBtn) {
   });
 }
 
-// Initial load
+// initial load of the content
 document.addEventListener('DOMContentLoaded', () => {
   clearFeed();
   loadPosts({ append: false });
